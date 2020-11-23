@@ -19,6 +19,18 @@ body {
     font-size: 16px;
 }
 
+section {
+    width:100%;
+}
+
+section h2{ 
+    width: 100%;
+}
+
+.text_blk {
+    font-family: 'PT Sans', sans-serif;
+}
+
 .container {
     width: 1280px;
     margin-left: auto;
@@ -224,3 +236,193 @@ body {
     background-position: bottom left;
 }
 
+/* _____________________Баннер главной_____________________ */
+
+.header-banner {
+    margin-top: 30px;
+}
+
+.header-banner__content {
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-flex: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    margin-right: 20px;
+    padding: 30px 40px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: contain;
+}
+
+.header-banner__title {
+    text-transform: uppercase;
+    font-size: 34px;
+    max-width: 380px;
+    padding-bottom: 28px;
+    font-weight: 700;
+}
+
+.header-banner__time {
+    font-weight: 700;
+    font-size: 18px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.header-banner__discount {
+    font-size: 50px;
+    font-weight: 700;
+    color: #227822;
+    margin-bottom: 36px;
+}
+
+.header-banner__advant {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.header-banner__content-img{
+    height: 235px;
+    width: auto;
+}
+
+.header-banner__advant-text {
+    font-size: 18px;
+    padding-left: 14px;
+    border-left: 4px solid #ffed00;
+    max-width: 150px;
+}
+
+.header-banner__advant-item {
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.header-banner__advant-icon {
+    width: 52px;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-right: 12px;
+}
+
+.advant-icon_24_7 {
+    background-image: url("~assets/24-7.svg");
+}
+
+.advant-icon_sert {
+    background-image: url("~assets/diploma.svg");
+}
+
+.advant-icon_dost {
+    background-image: url("~assets/shipped.svg");
+}
+
+/* ________________Текстовка на главной______________*/
+
+.main-category {
+    margin: 30px 0;
+}
+
+.main-category h1{
+    margin-top:0px;
+}
+
+.main-category .container {
+    flex-direction: column;
+}
+
+.container-cat {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.container-cat .main-category__item:first-child { 
+    margin-left: 0;
+}
+
+.container-cat .main-category__item:last-child { 
+    margin-right: 0;
+}
+
+.main-category__item {
+     border:1px solid lightgray;
+     flex: 1;
+     margin: 0 2%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.main-category__item-photo{
+    height: 200px;
+    width: auto;
+    margin: 10px 0;
+}
+.main-category__item-title{
+    width: 100%;
+    padding: 10px 0;
+    background-color: #58585a;
+    color: white;
+    
+}
+
+/* __________________Популярные марки авто и бренды________________________ */
+
+.popular-block {
+    width: 48%;
+}
+
+.popular-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;   
+}
+
+.popular-item {
+    width:18%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    padding: 1% 2%;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.popular-item img{ 
+    width: 85%;
+    margin: 0 auto;
+}
+
+.popular-item .popular-item__title{ 
+    width: 100%;
+    margin-top: 20px;
+    color: black;
+    font-weight: 700;
+}

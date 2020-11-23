@@ -4,7 +4,7 @@
         <info-header />
         <search-header/>
     </header>
-
+    
     <Nuxt />
   </div>
 </template>
