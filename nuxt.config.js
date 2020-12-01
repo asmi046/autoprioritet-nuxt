@@ -8,7 +8,12 @@ export default {
       { hid: 'description', name: 'description', content: 'Запчасти для иномарок, шины, диски, аккумуляторные батареии и автомобильные аксессуары в Курске. У нас выгодные цены и бонусы для постоянных клиентов.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/png', sizes: '256x256', href: '/fav/icon256.png' },
+      { rel: 'icon', type: 'image/png', sizes: '128x128', href: '/fav/icon128.png' },
+      { rel: 'icon', type: 'image/png', sizes: '64x64', href: '/fav/icon64.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/fav/icon32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/fav/icon16.png' },
+      { rel: 'icon', type: 'image/svg+xml', sizes: 'any', href: '/fav/iconSVG.svg' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=PT+Sans:wght@400;700&display=swap' }
     ]

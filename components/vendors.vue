@@ -41,7 +41,7 @@
               <div class="popular-item__title">Bosch</div>
             </nuxt-link>
           </div>
-          <nuxt-link to="/" class="link-more">Все производители</nuxt-link>
+          <nuxt-link to="/" class="link-more standartButton">Все производители</nuxt-link>
         </div>
 </template>
 

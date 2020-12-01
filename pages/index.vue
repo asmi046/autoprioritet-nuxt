@@ -14,7 +14,7 @@
       </div>
     </section>
 
-    <section class="container">
+    <section class="marki_vendori">
       <div class="container">
         <vendors></vendors>
         <car-vendor></car-vendor>

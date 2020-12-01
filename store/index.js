@@ -1,31 +1,28 @@
-// import Vuex from "vuex";
-// import axios from "axios";
+import axios from "axios";
 
-//  const createStore = () => {
-//     return new Vuex.Store ({
-//         state: {
-//             contactsApiUrl: "http://mixkur9v.beget.tech/wp-json/forfrontend/v1/contacts",
-//             siteOptionsData: []
-//         },
-//         getters:{
-//             siteOptionsData(state) {
-//                 return state.siteOptionsData;
-//             }
-//         },
-//         mutations: {
-//             getInformationFromAPI(state,siteOptionsData) {
-//                 state.siteOptionsData = siteOptionsData;
-//            } 
-//         },
-//         actions: {
-//             async getInformation (context) {
-//                 const siteDat = await axios.get(context.state.contactsApiUrl);
-//                 console.log("11");
-//                 context.commit("getInformationFromAPI",siteDat.data);
-//             }
-//         } 
+export const state = () => ({
+    contactsApiUrl: "http://mixkur9v.beget.tech/wp-json/forfrontend/v1/contacts",
+    siteCurrentInfo:[]
+});
 
-//     });
-// };
+export const mutations  = {
+    getInformationFromAPI(state,siteOptionsData) {
+        state.siteCurrentInfo = siteOptionsData;
+    }
+}
 
-// export default createStore;
+export const getters = {
+
+    getAdress(state) {
+        return state.siteCurrentInfo.address;
+    }
+}
+
+export const actions =  {
+    async nuxtServerInit(context) {
+        const siteDatApi = await axios.get(context.state.contactsApiUrl);
+        context.commit("getInformationFromAPI",siteDatApi.data);
+        console.log(siteDatApi.data);
+    }
+
+} 
