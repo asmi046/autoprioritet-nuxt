@@ -6,6 +6,8 @@
     </header>
     
     <Nuxt />
+    <foot/>
+
   </div>
 </template>
 

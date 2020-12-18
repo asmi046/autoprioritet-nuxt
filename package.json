@@ -9,7 +9,9 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
-    "deploy": "cd dist && scp -r * mixkur9v_all@mixkur9v.beget.tech:mixkur9v.beget.tech/public_html/app/"
+    "deploy": "cd dist && scp -r * mixkur9v_all@mixkur9v.beget.tech:mixkur9v.beget.tech/public_html/app/",
+    "send_func": "scp -C beckend/functions.php mixkur9v_all@mixkur9v.beget.tech:mixkur9v.beget.tech/public_html/wp-content/themes/auto/",
+    "send_carbon": "scp -C beckend/metaboxes.php mixkur9v_all@mixkur9v.beget.tech:mixkur9v.beget.tech/public_html/wp-content/themes/auto/inc/custom-fields-options/"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",

@@ -21,6 +21,9 @@
       </div>
     </section>
 
+    <blog-main/> 
+
+  
   </div>
 </template>
 

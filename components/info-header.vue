@@ -43,7 +43,7 @@ export default {
   },
 
    async fetch() { 
-      this.siteData = await this.$store.state.siteCurrentInfo;
+     this.siteData = await this.$store.state.siteCurrentInfo;
      console.log(this.siteData);
    },
 
