@@ -16,9 +16,7 @@ export const mutations  = {
 }
 
 export const getters = {
-    blogelem3(state) {
-        return state.blog3elem;
-    }
+    blogelem3: s => s.blog3elem
 }
 
 export const actions =  {

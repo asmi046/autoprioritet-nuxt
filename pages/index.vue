@@ -17,7 +17,7 @@
     <section class="marki_vendori">
       <div class="container">
         <vendors></vendors>
-        <car-vendor></car-vendor>
+         <car-vendor></car-vendor>
       </div>
     </section>
 
@@ -28,7 +28,14 @@
 </template>
 
 <script>
+  export default {
 
+    async fetch({store}) { 
+       console.log(store.getters["blogdata/blogelem3"]);
+       if (store.getters["blogdata/blogelem3"].length === 0)
+        await store.dispatch("blogdata/get3blogelem");
+    }
+  }
 </script>
 
 <style>

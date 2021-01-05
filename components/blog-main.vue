@@ -3,7 +3,13 @@
         <div class="container">
             <h2 class="section-title">Полезные материалы</h2>
             <div class="main-blog__wrapper">
-                <nuxt-link v-for="(item, index) in blogelems" :key="item.ID" to = "/" class="main-blog__item">
+                <!-- <nuxt-link v-for="(item, index) in blogElements" :key="index" :to = "'/blog/'+item.slug+'/?id='+item.ID" class="main-blog__item"> -->
+                <nuxt-link v-for="(item, index) in blogElements" :key="index" 
+                :to = "{
+                        path: '/blog/'+item.slug,
+                        query: { id: item.ID }
+                    }" 
+                class="main-blog__item">
                     <div class="main-blog__item-photo">
                         <img :src = "item.img">    
                     </div>
@@ -16,17 +22,10 @@
 
 <script>
 export default {
-    data() {
-          return {
-            blogelems:[]
-          }
-    },
-
-    async fetch() { 
-          this.$store.dispatch("blogdata/get3blogelem");
-          this.blogelems = await this.$store.state.blogdata.blog3elem;
-        console.log("28");
-        console.log(this.$store.state.blogdata);
-    }, 
+    computed:{ 
+        blogElements() {
+            return this.$store.state.blogdata.blog3elem;
+        }
+    } 
 }
 </script>
