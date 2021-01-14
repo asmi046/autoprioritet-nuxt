@@ -7,7 +7,8 @@
                     <li><nuxt-link to="/">Подбор запчастей</nuxt-link></li>
                     <li><nuxt-link to="/">Каталог запчастей</nuxt-link></li>
                     <li><nuxt-link to="/">Полезные материалы</nuxt-link></li>
-                    <li><nuxt-link to="/">Контакты</nuxt-link></li>
+                    <li><nuxt-link no-prefetch :to="{path: '/contacts'}">Контакты</nuxt-link></li>
+                    <!-- <li><a href="/contacts">Контакты</a></li> -->
                 </ul>
             </div>
 

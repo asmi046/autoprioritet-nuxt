@@ -10,8 +10,6 @@ export const mutations  = {
 
     SET_3_BLOGELEM(state, apiinfo) {
         state.blog3elem = apiinfo;
-        
-        console.log(state.blog3elem );
     }
 }
 

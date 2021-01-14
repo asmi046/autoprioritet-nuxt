@@ -5,10 +5,7 @@
             <div class="main-blog__wrapper">
                 <!-- <nuxt-link v-for="(item, index) in blogElements" :key="index" :to = "'/blog/'+item.slug+'/?id='+item.ID" class="main-blog__item"> -->
                 <nuxt-link v-for="(item, index) in blogElements" :key="index" 
-                :to = "{
-                        path: '/blog/'+item.slug,
-                        query: { id: item.ID }
-                    }" 
+                :to = "'/blog/'+item.slug+'-'+item.ID" 
                 class="main-blog__item">
                     <div class="main-blog__item-photo">
                         <img :src = "item.img">    

@@ -9,7 +9,6 @@ export const mutations  = {
 
     SH_GUEST(state) {
         state.showGuestRR = !state.showGuestRR;
-        console.log(state.showGuestRR);
     }
 }
 

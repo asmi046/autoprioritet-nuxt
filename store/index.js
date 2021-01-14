@@ -22,7 +22,6 @@ export const actions =  {
     async nuxtServerInit(context) {
         const siteDatApi = await axios.get(context.state.contactsApiUrl);
         context.commit("getInformationFromAPI",siteDatApi.data);
-        console.log(siteDatApi.data);
     }
 
 } 

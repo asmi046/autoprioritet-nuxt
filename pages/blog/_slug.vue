@@ -1,8 +1,8 @@
 <template>
     <section class = "text_section">
-        <div class="container">
-            <h1>{{postContent.data.title.rendered}}</h1>
-            <div v-html="postContent.data.content.rendered" class  = "postContentBlk">
+        <div class="container text_container">
+            <h1>{{postContent.title.rendered}}</h1>
+            <div v-html="postContent.content.rendered" class  = "postContentBlk">
             </div>
         </div>
     </section>
@@ -10,9 +10,10 @@
 
 <script>
     export default {
-        async asyncData ({route, $axios}) {
-             const postContent = await $axios.get("http://mixkur9v.beget.tech/wp-json/wp/v2/posts/"+route.query["id"]);
-           
+        async asyncData ({params, $axios}) {
+             let mass = params["slug"].split("-");
+             let id = mass[mass.length-1];
+             const postContent = await $axios.$get("http://mixkur9v.beget.tech/wp-json/wp/v2/posts/"+id);
              return {postContent};
         }
 

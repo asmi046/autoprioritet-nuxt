@@ -37,20 +37,16 @@ export default {
     },
 
     gsow() {
-      console.log(this.$store.getters);
       return this.$store.getters["sitedata/showGuest1"];
     }
   },
 
    async fetch() { 
      this.siteData = await this.$store.state.siteCurrentInfo;
-     console.log(this.siteData);
    },
 
   methods:{
    async sPh() {
-     console.log(this.$store.getters);
-     console.log(this.$store.state);
       this.$store.dispatch("sitedata/togglePhone");
     }
   }

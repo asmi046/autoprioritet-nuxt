@@ -2,6 +2,11 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'Автомобильные запчасти в Курске - Autoprioritet',
+    script: [
+      {
+          src: '//api-maps.yandex.ru/2.1/?lang=ru_RU'
+      }
+    ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -26,6 +31,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/map.client.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

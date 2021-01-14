@@ -31,7 +31,6 @@
   export default {
 
     async fetch({store}) { 
-       console.log(store.getters["blogdata/blogelem3"]);
        if (store.getters["blogdata/blogelem3"].length === 0)
         await store.dispatch("blogdata/get3blogelem");
     }
