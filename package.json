@@ -11,18 +11,11 @@
     "lint": "npm run lint:js",
     "send_func": "scp -C beckend/functions.php mixkur9v_all@mixkur9v.beget.tech:mixkur9v.beget.tech/public_html/wp-content/themes/auto/",
     "send_carbon": "scp -C beckend/metaboxes.php mixkur9v_all@mixkur9v.beget.tech:mixkur9v.beget.tech/public_html/wp-content/themes/auto/inc/custom-fields-options/",
-    "s_assets": "scp -r assets asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_beckend": "scp -r beckend asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_components": "scp -r components asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_layouts": "scp -r layouts asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_middleware": "scp -r middleware asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_pages": "scp -r pages asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_plugins": "scp -r plugins asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_static": "scp -r static asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_store": "scp -r store asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_root": "scp -C /. asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "s_root1": "scp -C .editorconfig asmi@45.80.69.237:www/autoprioritet-nuxt/",
-    "deploy": "npm run s_assets && npm run s_beckend && npm run s_components && npm run s_components && npm run s_layouts && npm run s_middleware && npm run s_pages && npm run s_plugins && npm run s_static && npm run s_store"
+    "clone_to_s": "ssh asmi@45.80.69.237 \" cd www && git clone -b master https://github.com/asmi046/autoprioritet-nuxt\"",
+    "pull_to_s": "ssh asmi@45.80.69.237 \" cd www && cd autoprioritet-nuxt && git pull https://github.com/asmi046/autoprioritet-nuxt\"",
+    "build_in_s": "ssh asmi@45.80.69.237 \"cd www && cd autoprioritet-nuxt && npm run build\"",
+    "start_in_s": "ssh asmi@45.80.69.237 \"cd www && cd autoprioritet-nuxt && npm run start\""
+    
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
