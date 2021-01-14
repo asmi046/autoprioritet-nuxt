@@ -4,7 +4,7 @@
             <div class="header-banner__content">
                 <div class="header-banner__content-text">
                     <div class="header-banner__title">Скидка на все моторные Масла</div>
-                    <div class="header-banner__discount">15%</div>
+                    <div class="header-banner__discount">35%</div>
                     <div class="header-banner__time">Только до конца 2019г.</div>
                 </div>
                 <img class="header-banner__content-img" src="~/assets/banner-bg.jpg" alt="">
