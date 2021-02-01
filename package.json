@@ -15,6 +15,7 @@
     "clone_to_s": "ssh asmi@45.80.69.237 \" cd www && git clone -b master https://github.com/asmi046/autoprioritet-nuxt\"",
     "pull_to_s": "ssh asmi@45.80.69.237 \" cd www && cd autoprioritet-nuxt && git pull https://github.com/asmi046/autoprioritet-nuxt\"",
     "build_in_s": "ssh asmi@45.80.69.237 \"cd www && cd autoprioritet-nuxt && npm run build\"",
+    "npmi_in_s": "ssh asmi@45.80.69.237 \"cd www && cd autoprioritet-nuxt && npm i\"",
     "restart_in_s": "ssh asmi@45.80.69.237 \"cd www && cd autoprioritet-nuxt && pm2 restart nuxt-prod\""
   },
   "dependencies": {
@@ -34,7 +35,7 @@
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
-      "port": "80"
+      "port": "8080"
     }
   }
 }
