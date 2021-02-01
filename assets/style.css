@@ -4,10 +4,50 @@ body, html {
     padding: 0;
 }
 
+input {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s; /* выставляется желаемая задержка */
+}
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=tel]
+{
+    width: 100%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+label {
+    color: grey;
+    font-size: 14px;
+}
+
 ul{
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.dontTisplay {
+    display: none;
 }
 
 body {
@@ -44,6 +84,7 @@ section h2{
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    
 }
 
 
@@ -52,8 +93,54 @@ section h2{
     margin-bottom: 30px;
 }
 
+.category_container { 
+    display: block;
+    margin-bottom: 30px;
+}
+
+.page_container { 
+    display: block;
+    margin-bottom: 30px;
+    min-height: 700px;
+}
+
+.loaderV {
+    width: 30px;
+    height: 30px;
+}
+
+.loaderV circle{
+    fill: black;
+    
+}
+
+.category_container h1,
 .text_container h1{
     font-size: 2.5em;
+}
+
+.brodContainer {
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+}
+
+.brodContainer a {
+    color: black;
+}
+
+.brodContainer a:hover { 
+    text-decoration: underline;
+}
+
+.brodContainer span:after {
+    content: "\2192";
+    color: black;
+    margin: 0 15px;
+}
+
+.brodContainer span:last-child:after {
+    content: "";
 }
 
 .header-top {
@@ -159,6 +246,11 @@ section h2{
     border-radius: 5px;
     min-height: 40px;
 }
+
+#searchform input[type=text]{
+    border: none;
+    box-shadow: none;
+ }
 
 .head_search_title {
     font-size: 22px;
@@ -468,6 +560,10 @@ section h2{
     justify-content: space-between;
 }
 
+.page-blog__wrapper {
+    flex-wrap: wrap;
+}
+
 .main-blog__item {
     width: 30%;
     text-decoration: none;
@@ -557,4 +653,173 @@ section h2{
 #map_in_page {
     width: 100%;
     height: 300px;
+}
+
+/* ________________________Поиск запчастей________________________ */
+
+.brandElement {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+    font-size: 14px;
+    flex-wrap: wrap;
+    display: flex;
+    height: 40px;
+}
+
+.brandElement .cellBrend:first-child {
+    padding-left: 0;
+}
+
+.brandElement .cellBrend:last-child {
+    padding-right: 0;
+}
+
+.brandElement:hover { 
+    background-color: #fec223;
+    cursor: pointer;
+
+}
+
+.cellBrend { 
+    padding: 0 10px;
+    display: block;
+}
+
+.cellArticle {
+    width: 10%;
+}
+
+.cellProducer {
+    width: 10%;
+    font-weight: 600;
+}
+
+.cellIdent {
+    width: 65%;
+}
+
+.cellManaged {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cellManaged p{ 
+    margin: auto 0 auto auto;
+    padding: 0;
+
+}
+
+.cellManaged .showAllTov::after {
+    content: "";
+    background: url(~assets/arrow.svg);
+    width: 20px;
+    height: 20px;
+    float: left;
+    transform: rotate(90deg);
+    
+}
+
+.pageloader .loaderV{
+    width:100px;
+}
+
+.pageloader .loaderV path{
+    fill: lightgrey;
+}
+
+.filterPanel {
+    width: 100%;
+}
+
+.filterPanelWrapper {
+    width: 100%;
+    margin: 10px 0;
+} 
+
+.filterPanel p,
+.filterPanel h2,
+.filterPanel h3 {
+    margin: 10px 0;
+}
+
+.brandSelectPanel {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.brandSelectPanel .bsElem.selected {
+    background-color: #fec223;
+}
+
+.brandSelectPanel .bsElem {
+    margin: 5px 15px 5px 0;
+    padding: 5px 15px 5px 15px;
+    border:1px solid lightgray;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.partTable {
+    width: 100%;
+
+}
+
+.partTableR {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.partTableH {
+    background-color: #3a745f;
+    color: white;
+}
+
+.ptAll {
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+.ptBodyAll {
+
+}
+
+.ptName {width: 20%;}
+.ptDescr {width: 40%;}
+
+.ptNameBig {width: 60%;}
+
+.ptCount {width: 10%;}
+.ptDate {width: 5%;}
+.ptPrice {width: 7%;}
+.ptMenedge {width: 5%;}
+
+.bascetBtn {
+    width: 15px;
+    height:  15px;
+    background-image: url("~assets/add-to-cart.svg");
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fec223;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tableWraper .partTableBody {
+    background-color: #ebebeb;
+}
+
+.tableWraper .partTableBody:nth-child(2n) {
+    background-color: #e1e1e1;
+}
+
+.formPanel input[type=number]
+{
+    width: 100px;
 }

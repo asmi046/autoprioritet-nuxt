@@ -48,8 +48,35 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+
+    '@nuxtjs/sitemap'
   ],
+
+ 
+  sitemap: {
+     gzip: true,
+     routes: async () => { 
+        const axios = require('axios')
+        const mapBlog = await axios.get('http://mixkur9v.beget.tech/wp-json/forfrontend/v2/sitemap');
+        return mapBlog.data;
+      },
+
+    // routes: [
+    //   {
+    //       url: "blog/samye-populyarnye-brendy-proizvodyashhie-zapchasti-v-raznyh-gruppah-7",
+    //       changefreq: "daily",
+    //       priority: 1,
+    //       lastmod: "Fri, 22 Jan 21 06:20:01 +0000"
+    //   },
+    //   {
+    //       url: "blog/kak-opredelit-poddelku-tormoznyh-kolodok-ate-7",
+    //       changefreq: "daily",
+    //       priority: 1,
+    //       lastmod: "Fri, 22 Jan 21 06:20:01 +0000"
+    //   }
+    // ]
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},

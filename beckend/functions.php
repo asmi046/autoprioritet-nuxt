@@ -6,6 +6,11 @@
  *
  * @package autoprioritet
  */
+
+require_once ('TrinityPartsWS.php');
+define('CLIENT_KEY', "1EEB8A1B71CA019259216FE234A9A246");
+
+
 $siteadr = "___________________.ru";
 $sitename = "Автоприоритет";
 add_action( 'carbon_fields_register_fields', 'boots_register_custom_fields' );
@@ -715,6 +720,17 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
+function post_featured_image_json( $data, $post, $context ) {
+	$featured_image_id = $data->data['featured_media']; // get featured image id
+	$featured_image_url = wp_get_attachment_image_src( $featured_image_id, 'original' ); // get url of the original size
+  
+	if( $featured_image_url ) {
+	  $data->data['featured_image_url'] = $featured_image_url[0];
+	}
+  
+	return $data;
+  }
+  add_filter( 'rest_prepare_post', 'post_featured_image_json', 10, 3 );
 
 
 add_action( 'rest_api_init', function () {
@@ -723,6 +739,45 @@ add_action( 'rest_api_init', function () {
 		'methods'  => 'GET',
 		'permission_callback'  => null,
 		'callback' => 'get_site_contact',
+	) );
+
+
+	// Регистрирует маршрут полдучение карты сайта
+	//http://mixkur9v.beget.tech/wp-json/forfrontend/v2/sitemap
+	register_rest_route( 'forfrontend/v2', '/sitemap', array(
+			'methods'  => 'GET',
+			'permission_callback'  => null,
+			'callback' => 'get_site_map',
+	) );
+
+	// Регистрирует маршрут получения списка брендов
+	//http://mixkur9v.beget.tech/wp-json/forfrontend/v1/brands
+	register_rest_route( 'forfrontend/v1', '/brands', array(
+		'methods'  => 'GET',
+		'permission_callback'  => null,
+		'callback' => 'get_brands_list',
+		'args'     => array(
+			'partnumber' => array(
+				'default' => ""
+			)
+		)
+	) );
+
+	// Регистрирует маршрут получения списка товаров бренда
+	//http://mixkur9v.beget.tech/wp-json/forfrontend/v1/tovars
+	register_rest_route( 'forfrontend/v1', '/tovars', array(
+		'methods'  => 'GET',
+		'permission_callback'  => null,
+		'callback' => 'get_tovars_list',
+		'args'     => array(
+			'partnumber' => array(
+				'default' => ""
+			),
+			
+			'brand' => array(
+				'default' => ""
+			)
+		)
 	) );
 
 	// Регистрирует маршрут вывода блога на главную		
@@ -740,7 +795,7 @@ function get_blog_material3( WP_REST_Request $request ) {
 
 	$rez = array();
 
-	$query = new WP_Query( [ 'cat' => 16 ] );
+	$query = new WP_Query( [ 'cat' => 16, 'posts_per_page' => 3, 'order' => 'DESC' ] );
 	foreach( $query->posts as $pst ){
 		$elsment["ID"] = $pst->ID;
 		$elsment["title"] = $pst->post_title;
@@ -756,6 +811,120 @@ function get_blog_material3( WP_REST_Request $request ) {
 	return $rez;
 
 }
+
+// Список брендов
+//
+function get_brands_list( WP_REST_Request $request ) {
+	$ws = new \TrinityPartsWS(CLIENT_KEY);
+	
+	$partnumber = $request->get_param( 'partnumber' );
+	
+	if (!empty ($partnumber)) {
+		$brands = $ws->searchBrands($partnumber);
+		$contacts = array(
+			'obj' => $brands,
+			'pass' => CLIENT_KEY,
+			
+		);
+	} 
+
+	if ( empty( $contacts ) )
+		return new WP_Error( 'no_contacts', 'Записей не найдено', array( 'status' => 404 ) );
+
+	return $contacts;
+}
+
+
+// Список товаров бренда
+//
+function get_tovars_list( WP_REST_Request $request ) {
+	$ws = new \TrinityPartsWS(CLIENT_KEY);
+	
+	$partnumber = $request->get_param( 'partnumber' );
+	$brand = $request->get_param( 'brand' );
+	
+	if (!empty ($partnumber) && !empty($brand)) {
+		$tovars = $ws->searchItems($partnumber, $brand);
+		$tovarsSorted = array();
+		
+		$totalMaxPrice = -1; 
+		$totalMaxPriceTov = [];
+
+		$totalMinPrice = 99000000; 
+		$totalMinPriceTov = []; 
+
+		$totalMinDelivery = 99000000; 
+		$totalMinDeliveryTov = [];
+
+		$totalMaxDelivery = -1; 
+		$totalMaxDeliveryTov = [];
+
+		foreach ($tovars["data"] as $telem) {
+			if (empty($tovarsSorted[$telem["producer"]]["minprice"])) 
+					$tovarsSorted[$telem["producer"]]["minprice"] = round($telem["price"],2);
+
+			if ($tovarsSorted[$telem["producer"]]["minprice"] > $telem["price"])
+				$tovarsSorted[$telem["producer"]]["minprice"] = round($telem["price"],2); 
+
+			if ($totalMinPrice >  $telem["price"] ) {
+					$totalMinPrice = round($telem["price"]);
+					$totalMinPriceTov = $telem;
+			}
+
+			if ($totalMaxPrice <  $telem["price"] ) {
+				$totalMaxPrice = round($telem["price"]);
+				$totalMaxPriceTov = $telem;
+			}
+
+			$tovarsSorted[$telem["producer"]]["count"]++;
+			$tovarsSorted[$telem["producer"]]["code"] = $telem["code"];
+			$tovarsSorted[$telem["producer"]]["brend"] = $telem["producer"];
+			$telem["price"] = round($telem["price"],2);
+			if (strpos($telem["deliverydays"], "/")){
+				$telem["deliverydays_min"] = explode("/", $telem["deliverydays"])[0];
+				$telem["deliverydays_max"] = explode("/", $telem["deliverydays"])[1];
+			} else {
+				$telem["deliverydays_min"] = explode("-", $telem["deliverydays"])[0];
+				$telem["deliverydays_max"] = explode("-", $telem["deliverydays"])[1];
+			}
+
+			if ($totalMinDelivery > $telem["deliverydays_min"] ) {
+				$totalMinDelivery = round($telem["deliverydays_min"]) ;
+				$totalMinDeliveryTov = $telem;
+			}
+
+			if ($totalMaxDelivery < $telem["deliverydays_max"] ) {
+				$totalMaxDelivery = round($telem["deliverydays_max"]) ;
+				$totalMaxDeliveryTov = $telem;
+			}
+
+			$tovarsSorted[$telem["producer"]]["items"][] = $telem;
+		}
+
+		$contacts = array(
+			'total_max_price' => $totalMaxPrice,
+			'total_max_price_tov' =>$totalMaxPriceTov,
+
+			'total_min_price' => $totalMinPrice,
+			'total_min_price_tov' =>$totalMinPriceTov, 
+
+			'total_max_delivery' => $totalMaxDelivery, 
+			'total_max_delivery_tov' =>$totalMaxDeliveryTov, 
+
+			'total_min_delivery' => $totalMinDelivery, 
+			'total_min_delivery_tov' =>$totalMinDeliveryTov, 
+
+			'obj' => $tovarsSorted,
+			'pass' => CLIENT_KEY,
+		);
+	} 
+
+	if ( empty( $contacts ) )
+		return new WP_Error( 'no_contacts', 'Записей не найдено', array( 'status' => 404 ) );
+
+	return $contacts;
+}
+
 // Обрабатывает запрос
 function get_site_contact( WP_REST_Request $request ) {
 
@@ -777,4 +946,26 @@ function get_site_contact( WP_REST_Request $request ) {
 		return new WP_Error( 'no_contacts', 'Записей не найдено', array( 'status' => 404 ) );
 
 	return $contacts;
+}
+
+
+// Генерация карты сайта
+function get_site_map( WP_REST_Request $request ) {
+
+	$rez = array();
+
+	$query = new WP_Query( [ 'cat' => 16, 'posts_per_page' => -1, 'order' => 'DESC' ] );
+	foreach( $query->posts as $pst ){
+		$elsment["url"] = "blog/".$pst->post_name;
+		$elsment["changefreq"] = 'daily';
+		$elsment["priority"] = 1;
+		$elsment["lastmod"] = date(DATE_RFC822);
+		$rez[] = $elsment;
+	}
+
+
+	if ( empty( $rez ) )
+		return new WP_Error( 'no_contacts', 'Записей не найдено', array( 'status' => 404 ) );
+
+	return $rez;
 }

@@ -10,8 +10,8 @@
                 </div>
             
                 <form role="search" method="get" id="searchform" action="http://mixkur9v.beget.tech/podbor-zapchastej/">
-                    <input type="text" value="" placeholder="Введите артикул для поиска" name="search_code" id="s">
-                    <input type="submit" id="searchsubmit" value="">
+                    <input type="text" v-model="trueSearchStr" placeholder="Введите артикул для поиска" name="search_code" id="s">
+                    <input @click.prevent = "searchDo" type="submit"  id="searchsubmit" value="">
                 </form>
             
                 <div class="header-user">
@@ -33,6 +33,20 @@
 
 <script>
 export default {
-    
+    data()  {
+        return {
+            trueSearchStr:""
+        }
+    },
+    mounted: function () {
+            this.trueSearchStr = this.$route.query.qs;
+    },
+    methods:{
+         searchDo({$router}) {
+
+            this.$router.push({path: '/search', query: { qs: this.trueSearchStr }})
+        }
+    }
+
 }
 </script>

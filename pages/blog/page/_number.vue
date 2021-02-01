@@ -20,16 +20,16 @@
 <script>
     export default {
         async asyncData({params, $axios, route}) {
-            const currentPage = 1;
+            const currentPage = params["number"];
             const inPage = 9;
-            const postContent = await $axios.get("http://mixkur9v.beget.tech/wp-json/wp/v2/posts/?categories=16&per_page="+inPage+"&page=1");
+            const postContent = await $axios.get("http://mixkur9v.beget.tech/wp-json/wp/v2/posts/?categories=16&per_page="+inPage+"&page="+params["number"]);
             
             const bcPatch = [];
             bcPatch.push({title:"Блог", lnk:"/blog"});
-            
+            bcPatch.push({title:"Страница # "+currentPage, lnk:"/blog/page/"+currentPage});
 
             const blogData = postContent.data; 
-            
+           
             const totalCount = postContent.headers["x-wp-total"]; 
             return {blogData, totalCount, inPage, currentPage, bcPatch};
         },
