@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const state = () => ({
-    contactsApiUrl: "http://mixkur9v.beget.tech/wp-json/forfrontend/v1/contacts",
+    contactsApiUrl: "https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/contacts",
     siteCurrentInfo:[]
 });
 

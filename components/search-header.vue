@@ -9,7 +9,7 @@
                     <a href="#" class="header-help">Помощь в подборе</a>
                 </div>
             
-                <form role="search" method="get" id="searchform" action="http://mixkur9v.beget.tech/podbor-zapchastej/">
+                <form role="search" method="get" id="searchform" action="">
                     <input type="text" v-model="trueSearchStr" placeholder="Введите артикул для поиска" name="search_code" id="s">
                     <input @click.prevent = "searchDo" type="submit"  id="searchsubmit" value="">
                 </form>

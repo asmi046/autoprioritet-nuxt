@@ -158,7 +158,7 @@ import loader from '../components/loader.vue';
                 if (this.trueSearchStr != "") {
                     this.showLoad = true;
                     this.brandSearchResult=[];
-                    this.$axios.$get("http://mixkur9v.beget.tech/wp-json/forfrontend/v1/brands?partnumber="+this.trueSearchStr).then( (response) => {
+                    this.$axios.$get("https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/brands?partnumber="+this.trueSearchStr).then( (response) => {
                         this.brandSearchResult = response.obj.data;
                         console.log(this.brandSearchResult);
                         this.showLoad = false;
@@ -171,7 +171,7 @@ import loader from '../components/loader.vue';
                 
                 if ((this.trueSearchStr != "")&&(this.trueSearchStrBrand != "")) {
                     this.showLoad = true;
-                    this.$axios.$get("http://mixkur9v.beget.tech/wp-json/forfrontend/v1/tovars?partnumber="+this.trueSearchStr+"&brand="+this.trueSearchStrBrand).then( (response) => {
+                    this.$axios.$get("https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/tovars?partnumber="+this.trueSearchStr+"&brand="+this.trueSearchStrBrand).then( (response) => {
                         this.partSearchResult =  Object.assign({},response.obj);
                         this.sortedPartsResult = Object.assign({},response.obj);
                         this.showLoad = false;

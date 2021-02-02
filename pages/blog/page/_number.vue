@@ -22,7 +22,7 @@
         async asyncData({params, $axios, route}) {
             const currentPage = params["number"];
             const inPage = 9;
-            const postContent = await $axios.get("http://mixkur9v.beget.tech/wp-json/wp/v2/posts/?categories=16&per_page="+inPage+"&page="+params["number"]);
+            const postContent = await $axios.get("https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/wp/v2/posts/?categories=16&per_page="+inPage+"&page="+params["number"]);
             
             const bcPatch = [];
             bcPatch.push({title:"Блог", lnk:"/blog"});

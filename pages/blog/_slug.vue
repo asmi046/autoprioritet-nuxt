@@ -15,7 +15,7 @@
         async asyncData ({params, $axios, route}) {
              let mass = params["slug"].split("-");
              let id = mass[mass.length-1];
-             const postContent = await $axios.$get("http://mixkur9v.beget.tech/wp-json/wp/v2/posts/"+id);
+             const postContent = await $axios.$get("https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/wp/v2/posts/"+id);
              
              const bcPatch = [];
              bcPatch.push({title:"Блог", lnk:"/blog"});

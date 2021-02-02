@@ -58,7 +58,7 @@ export default {
      gzip: true,
      routes: async () => { 
         const axios = require('axios')
-        const mapBlog = await axios.get('http://mixkur9v.beget.tech/wp-json/forfrontend/v2/sitemap');
+        const mapBlog = await axios.get('https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/sitemap');
         return mapBlog.data;
       },
 

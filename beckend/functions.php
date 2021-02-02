@@ -743,7 +743,7 @@ add_action( 'rest_api_init', function () {
 
 
 	// Регистрирует маршрут полдучение карты сайта
-	//http://mixkur9v.beget.tech/wp-json/forfrontend/v2/sitemap
+	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/sitemap
 	register_rest_route( 'forfrontend/v2', '/sitemap', array(
 			'methods'  => 'GET',
 			'permission_callback'  => null,
@@ -751,7 +751,7 @@ add_action( 'rest_api_init', function () {
 	) );
 
 	// Регистрирует маршрут получения списка брендов
-	//http://mixkur9v.beget.tech/wp-json/forfrontend/v1/brands
+	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/brands
 	register_rest_route( 'forfrontend/v1', '/brands', array(
 		'methods'  => 'GET',
 		'permission_callback'  => null,
@@ -764,7 +764,7 @@ add_action( 'rest_api_init', function () {
 	) );
 
 	// Регистрирует маршрут получения списка товаров бренда
-	//http://mixkur9v.beget.tech/wp-json/forfrontend/v1/tovars
+	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/tovars
 	register_rest_route( 'forfrontend/v1', '/tovars', array(
 		'methods'  => 'GET',
 		'permission_callback'  => null,
