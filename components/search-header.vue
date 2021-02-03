@@ -22,6 +22,7 @@
             <div class = "header-left__buttons" >
                 <NuxtLink to="/" class="header-left-btn header-cart">Корзина</NuxtLink>
                 <NuxtLink to="/" class="header-left-btn header-cabinet">Кабинет</NuxtLink>
+                <span @click.prevent="showMenu()" class="header-left-btn header-menu">Меню</span>
             </div>
         </div>
       </div>
@@ -45,6 +46,11 @@ export default {
          searchDo({$router}) {
 
             this.$router.push({path: '/search', query: { qs: this.trueSearchStr }})
+        },
+
+        async showMenu() {
+            this.$store.dispatch("chengeMenuState");
+            console.log(this.$store);
         }
     }
 

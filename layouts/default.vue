@@ -3,6 +3,7 @@
     <header class="header">
         <info-header />
         <search-header/>
+        <menu-main/>
     </header>
     
     <Nuxt />
