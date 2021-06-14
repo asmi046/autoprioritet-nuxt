@@ -4,7 +4,7 @@ export default {
     title: 'Автомобильные запчасти в Курске - Autoprioritet',
     script: [
       {
-          src: '//api-maps.yandex.ru/2.1/?lang=ru_RU'
+        src: '//api-maps.yandex.ru/2.1/?lang=ru_RU'
       }
     ],
     meta: [
@@ -40,7 +40,7 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    //'@nuxtjs/eslint-module'
+    // '@nuxtjs/eslint-module'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -53,14 +53,13 @@ export default {
     '@nuxtjs/sitemap'
   ],
 
- 
   sitemap: {
-     gzip: true,
-     routes: async () => { 
-        const axios = require('axios')
-        const mapBlog = await axios.get('https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/sitemap');
-        return mapBlog.data;
-      },
+    gzip: true,
+    routes: async () => {
+      const axios = require('axios')
+      const mapBlog = await axios.get('https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/sitemap')
+      return mapBlog.data
+    }
 
     // routes: [
     //   {
