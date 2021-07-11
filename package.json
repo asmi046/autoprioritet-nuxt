@@ -16,9 +16,9 @@
     "pull_to_s": "ssh asmi@213.139.210.68 \" cd www && cd autoprioritet-nuxt && git pull https://github.com/asmi046/autoprioritet-nuxt\"",
     "build_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && npm run build\"",
     "npmi_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && npm i\"",
-    "stop_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && pm2 stop nuxt-prod\"",
-    "start_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && pm2 start nuxt-prod\"",
-    "restart_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && pm2 restart nuxt-prod\"",
+    "stop_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && pm2 stop site-start\"",
+    "start_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && pm2 start site-start\"",
+    "restart_in_s": "ssh asmi@213.139.210.68 \"cd www && cd autoprioritet-nuxt && pm2 restart site-start\"",
     "deploy": "npm run stop_in_s && npm run pull_to_s && npm run build_in_s && npm run restart_in_s && npm run start_in_s "
   },
   "dependencies": {
