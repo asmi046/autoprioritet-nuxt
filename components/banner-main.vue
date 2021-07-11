@@ -20,7 +20,7 @@
         <div class="header-banner__advant-item">
           <div class="header-banner__advant-icon advant-icon_24_7" style="" />
           <div class="header-banner__advant-text">
-            Принимаем заказы круглосуточно!!!
+            Принимаем заказы круглосуточно
           </div>
         </div>
         <div class="header-banner__advant-item">
