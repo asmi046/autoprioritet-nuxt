@@ -2,7 +2,7 @@
   <section class="text_section">
     <div class="container text_container">
       <breadcrumbs :rout-page="bcPatch" />
-      <h1>{{ postContent.title.rendered }}111</h1>
+      <h1>{{ postContent.title.rendered }} 111</h1>
       <div class="postContentBlk" v-html="postContent.content.rendered" />
     </div>
   </section>
