@@ -180,12 +180,12 @@ export default {
   },
 
   mounted () {
-    this.trueSearchStr = this.$route.query.qs == undefined ? '' : this.$route.query.qs
-    this.trueSearchStrBrand = this.$route.query.brand == undefined ? '' : this.$route.query.brand
+    this.trueSearchStr = (this.$route.query.qs === undefined) ? '' : this.$route.query.qs
+    this.trueSearchStrBrand = this.$route.query.brand === undefined ? '' : this.$route.query.brand
 
-    if ((this.trueSearchStr != '') && (this.trueSearchStrBrand == '')) { this.doSearch() }
+    if ((this.trueSearchStr !== '') && (this.trueSearchStrBrand === '')) { this.doSearch() }
 
-    if ((this.trueSearchStr != '') && (this.trueSearchStrBrand != '')) { this.doSearchItem() }
+    if ((this.trueSearchStr !== '') && (this.trueSearchStrBrand !== '')) { this.doSearchItem() }
   },
 
   methods: {
