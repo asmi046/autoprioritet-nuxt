@@ -735,9 +735,9 @@ function post_featured_image_json( $data, $post, $context ) {
 
 add_action( 'rest_api_init', function () {
 	// Регистрирует маршрут получения контактов
-	register_rest_route( 'forfrontend/v1', '/contacts', array(
+	register_rest_route( 'forfrontend/v2', '/contacts', array(
 		'methods'  => 'GET',
-		'permission_callback'  => null,
+		
 		'callback' => 'get_site_contact',
 	) );
 
@@ -751,8 +751,8 @@ add_action( 'rest_api_init', function () {
 	) );
 
 	// Регистрирует маршрут получения списка брендов
-	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/brands
-	register_rest_route( 'forfrontend/v1', '/brands', array(
+	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/brands
+	register_rest_route( 'forfrontend/v2', '/brands', array(
 		'methods'  => 'GET',
 		'permission_callback'  => null,
 		'callback' => 'get_brands_list',
@@ -764,8 +764,8 @@ add_action( 'rest_api_init', function () {
 	) );
 
 	// Регистрирует маршрут получения списка товаров бренда
-	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/tovars
-	register_rest_route( 'forfrontend/v1', '/tovars', array(
+	//https://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/tovars
+	register_rest_route( 'forfrontend/v2', '/tovars', array(
 		'methods'  => 'GET',
 		'permission_callback'  => null,
 		'callback' => 'get_tovars_list',
@@ -788,6 +788,38 @@ add_action( 'rest_api_init', function () {
 	) );	
 
 } );
+
+
+add_action( 'rest_api_init', function(){
+
+	register_rest_route( 'myplug/v2', '/posts', array(
+		'methods'  => 'GET',
+		'callback' => 'myplug_get_post_items',
+	) );
+
+} );
+
+function myplug_get_post_items(){
+	$posts = get_posts( array (
+		'post_status' => 'publish',
+		'numberposts' => 100
+	) ) ;
+
+	$items = array();
+
+	foreach( $posts as $post ){
+		$items[] = array(
+			'id'      => $post->ID,
+			'title'   => $post->post_title,
+			'author'  => get_the_author_meta( 'display_name', $post->post_author ),
+			'content' => apply_filters( 'the_content', $post->post_content ),
+			'teaser'  => $post->post_excerpt
+		);
+	}
+
+	return $items;
+}
+
 
 // Обрабатывает запрос
 function get_blog_material3( WP_REST_Request $request ) {

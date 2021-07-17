@@ -1,10 +1,23 @@
 import axios from 'axios'
 
 export const state = () => ({
-  contactsApiUrl: 'http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/contacts',
   siteCurrentInfo: [],
-  showMenu: false
+  showMenu: false,
+  api_prefix: 'http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/'
+
 })
+
+export const actions = {
+  async nuxtServerInit (context) {
+    const siteDatApi = await axios.get(context.state.api_prefix + 'contacts')
+    context.commit('getInformationFromAPI', siteDatApi.data)
+  },
+
+  chengeMenuState (context) {
+    context.commit('menuState', true)
+  }
+
+}
 
 export const mutations = {
   getInformationFromAPI (state, siteOptionsData) {
@@ -24,17 +37,9 @@ export const getters = {
 
   getMenuState (state) {
     return state.showMenu
-  }
-}
-
-export const actions = {
-  async nuxtServerInit (context) {
-    const siteDatApi = await axios.get(context.state.contactsApiUrl)
-    context.commit('getInformationFromAPI', siteDatApi.data)
   },
 
-  async chengeMenuState (context) {
-    context.commit('menuState', true)
+  API_PREFIX (state) {
+    return state.api_prefix
   }
-
 }
