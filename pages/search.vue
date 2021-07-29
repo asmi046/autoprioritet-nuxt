@@ -257,13 +257,13 @@ export default {
         trinityElem: item
       }
 
-      this.$store.dispatch('addTobascet', bElement)
+      this.$store.dispatch('bascet/addTobascet', bElement)
 
-      console.log(item.bid)
-      console.log(item.bra_id)
-      console.log(item.bra_id + '_' + item.stock)
-      console.log(item)
-      console.log(item)
+      // console.log(item.bid)
+      // console.log(item.bra_id)
+      // console.log(item.bra_id + '_' + item.stock)
+      // console.log(item)
+      // console.log(item)
     }
   }
 }
