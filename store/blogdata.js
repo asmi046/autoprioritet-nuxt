@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const state = () => ({
   blog3elem: [],
-  blog3elemUrl: 'http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/blogmaterial'
+  blog3elemUrl: 'http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/blogmaterial'
 
 })
 

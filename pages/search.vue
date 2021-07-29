@@ -38,20 +38,20 @@
             <form action="" class="filter">
               <label for="filterPriceMin">Цена от</label>
               <input
+                id="filterPriceMin"
                 v-model="filterMinPrice"
                 type="number"
                 :min="totalMinPrice"
                 :max="totalMaxPrice"
                 placeholder="Цена от"
                 name="filterPriceMin"
-                id="filterPriceMin"
                 @change="filtresParts()"
               >
               <label for="filterPriceMax">до</label>
               <input
+                id="filterPriceMax"
                 v-model="filterMaxPrice"
                 type="number"
-                id="filterPriceMax"
                 :min="totalMinPrice"
                 :max="totalMaxPrice"
                 placeholder="Цена до"
@@ -61,9 +61,9 @@
 
               <label for="filterDeliveryMax">Срок поставки до</label>
               <input
+                id="filterDeliveryMax"
                 v-model="filterMaxDelivery"
                 type="number"
-                id="filterDeliveryMax"
                 :min="totalMinDelivery"
                 :max="totalMaxDelivery"
                 placeholder="Время доставки до"
@@ -120,7 +120,7 @@
                 {{ item.price }}
               </div>
               <div class="ptAll ptMenedge">
-                <div class="bascetBtn" />
+                <div class="bascetBtn" @click.prevent="addToBascet(item)" />
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ export default {
       if (this.trueSearchStr != '') {
         this.showLoad = true
         this.brandSearchResult = []
-        this.$axios.$get('http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/brands?partnumber=' + this.trueSearchStr).then((response) => {
+        this.$axios.$get('http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/brands?partnumber=' + this.trueSearchStr).then((response) => {
           this.brandSearchResult = response.obj.data
           console.log(this.brandSearchResult)
           this.showLoad = false
@@ -204,7 +204,7 @@ export default {
     doSearchItem () {
       if ((this.trueSearchStr != '') && (this.trueSearchStrBrand != '')) {
         this.showLoad = true
-        this.$axios.$get('http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v1/tovars?partnumber=' + this.trueSearchStr + '&brand=' + this.trueSearchStrBrand).then((response) => {
+        this.$axios.$get('http://head.xn--80aejla8abgjcqhb.xn--p1ai/wp-json/forfrontend/v2/tovars?partnumber=' + this.trueSearchStr + '&brand=' + this.trueSearchStrBrand).then((response) => {
           this.partSearchResult = Object.assign({}, response.obj)
           this.sortedPartsResult = Object.assign({}, response.obj)
           this.showLoad = false
@@ -249,6 +249,21 @@ export default {
       } else { this.brandList.push(brandName) }
 
       console.log(this.brandList)
+    },
+
+    addToBascet (item) {
+      const bElement = {
+        sku: item.bra_id + '_' + item.stock,
+        trinityElem: item
+      }
+
+      this.$store.dispatch('addTobascet', bElement)
+
+      console.log(item.bid)
+      console.log(item.bra_id)
+      console.log(item.bra_id + '_' + item.stock)
+      console.log(item)
+      console.log(item)
     }
   }
 }
