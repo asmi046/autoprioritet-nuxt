@@ -119,8 +119,11 @@
               <div class="ptAll ptBodyAll ptPrice">
                 {{ item.price }}
               </div>
-              <div class="ptAll ptMenedge">
-                <div class="bascetBtn" @click.prevent="addToBascet(item)" />
+              <div class="ptAll ptBodyAll ptMenedge">
+                <form action="" class="tbForm">
+                  <input value="1" type="number" class="count">
+                  <button class="bascetBtn" @click.prevent="addToBascet(item)" />
+                </form>
               </div>
             </div>
           </div>

@@ -8,6 +8,10 @@ input {
     outline: none;
 }
 
+button {
+    border: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -801,27 +805,34 @@ section h2{
 .ptAll {
     padding: 5px 15px;
     font-size: 14px;
+    word-wrap: break-word;
 }
 
-.ptBodyAll {
-
-}
 
 .ptName {width: 20%;}
 .ptDescr {width: 40%;}
 
-.ptNameBig {width: 60%;}
+.ptNameBig {width: 55%;}
 
-.ptCount {width: 10%;}
+.ptCount {width: 7%;}
 .ptDate {width: 5%;}
 .ptPrice {width: 7%;}
-.ptMenedge {width: 3%;}
+.ptMenedge {width: 10%;}
+
+.tbForm {
+    display: flex;
+    min-width:105px
+}
+
+.tbForm input{ 
+margin: 0 5px 0 0;
+}
 
 .bascetBtn {
-    width: 15px;
-    height:  15px;
+    min-width: 33px;
+    height: 33px;
     background-image: url("~assets/add-to-cart.svg");
-    background-size: 60%;
+    background-size: 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #fec223;
@@ -897,13 +908,6 @@ section h2{
             margin-top: 20px;
         }
 
-        .ptNameBig {
-            width:58%;
-        }
-
-        .ptCount {
-            word-wrap: break-word;
-        }
     }
 
     @media (max-width: 960px) {  
@@ -915,9 +919,6 @@ section h2{
             flex-direction: column;
         }
 
-        .ptNameBig {
-            width:54%;
-        }
     }
 
     @media (max-width: 760px) { 
@@ -935,9 +936,6 @@ section h2{
             background-position: center;
         }
 
-        .ptNameBig {
-            width:50%;
-        }
     }
 
     @media (max-width: 620px) { 
@@ -948,4 +946,59 @@ section h2{
         .header-bottom {
             margin-top: 0;
         }
+
+        .partTableH {
+            display: none;
+        }
+        
+        .head_search_title {
+            display: none;
+        }
+
+        .ptBodyAll {
+            width: 100%;
+        }
+
+        .ptAll {
+            padding: 0;
+        }
+
+        .ptBodyAll {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .ptBodyAll {
+            display: inline-flex;
+            width: 100%;
+            padding: 7px 10px;
+        }
+
+        .ptBodyAll::before { 
+            content: "Наименование";
+            min-width: 100%;
+            display: inline-flex;
+            font-size: 12px;
+            color:gray;
+            margin-bottom: 5px;
+
+        }
+
+        .ptCount::before {
+            content:"Количество (шт.)"
+        }
+
+        .ptDate::before {
+            content:"Срок доставки (дни)"
+        }
+
+        .ptPrice::before {
+            content:"Цена (руб.)"
+        }
+
+        .ptMenedge::before {
+            content:"Купить"
+        }
+
     }
