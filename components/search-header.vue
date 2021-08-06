@@ -20,6 +20,7 @@
 
       <div class="header-left__buttons">
         <NuxtLink to="/" class="header-left-btn header-cart">
+          <bascet-counter />
           Корзина
         </NuxtLink>
         <NuxtLink to="/" class="header-left-btn header-cabinet">
@@ -36,7 +37,9 @@
 </style>
 
 <script>
+import bascetCounter from './bascetCounter.vue'
 export default {
+  components: { bascetCounter },
   data () {
     return {
       trueSearchStr: ''

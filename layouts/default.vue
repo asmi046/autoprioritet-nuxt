@@ -16,5 +16,9 @@
 </style>
 
 <script>
-
+export default {
+  mounted () {
+    this.$store.dispatch('bascet/addAllBascetInStore')
+  }
+}
 </script>

@@ -121,8 +121,8 @@
               </div>
               <div class="ptAll ptBodyAll ptMenedge">
                 <form action="" class="tbForm">
-                  <input value="1" type="number" class="count">
-                  <button class="bascetBtn" @click.prevent="addToBascet(item)" />
+                  <input v-model="item.count_bs" type="number" class="count">
+                  <button class="bascetBtn" @click.prevent="addToBascet(item, item.count_bs)" />
                 </form>
               </div>
             </div>
@@ -254,9 +254,16 @@ export default {
       console.log(this.brandList)
     },
 
-    addToBascet (item) {
+    addToBascet (item, countPr) {
       const bElement = {
         sku: item.bra_id + '_' + item.stock,
+        code: item.code,
+        price: item.price,
+        count: countPr,
+        producer: item.producer,
+        quickDelivery: item.quickDelivery,
+        stock: item.stock,
+        subtotal: 0,
         trinityElem: item
       }
 
@@ -265,7 +272,8 @@ export default {
       // console.log(item.bid)
       // console.log(item.bra_id)
       // console.log(item.bra_id + '_' + item.stock)
-      // console.log(item)
+      console.log(item)
+      console.log(countPr)
       // console.log(item)
     }
   }

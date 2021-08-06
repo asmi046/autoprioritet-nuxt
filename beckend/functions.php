@@ -880,6 +880,9 @@ function get_tovars_list( WP_REST_Request $request ) {
 			$tovarsSorted[$telem["producer"]]["code"] = $telem["code"];
 			$tovarsSorted[$telem["producer"]]["brend"] = $telem["producer"];
 			$telem["price"] = round($telem["price"],2);
+			$telem["count_bs"] = 1;
+			$telem["subtotal"] = 0;
+
 			if (strpos($telem["deliverydays"], "/")){
 				$telem["deliverydays_min"] = explode("/", $telem["deliverydays"])[0];
 				$telem["deliverydays_max"] = explode("/", $telem["deliverydays"])[1];
