@@ -28,9 +28,10 @@
 export default {
 
   async fetch ({ store }) {
-    if (store.getters['blogdata/blogelem3'].length === 0) {
-      await store.dispatch('blogdata/get3blogelem')
-    }
+    console.log('2----')
+    // if (store.getters['blogdata/blogelem3'].length === 0) {
+    //   await store.dispatch('blogdata/get3blogelem')
+    // }
   }
 }
 </script>
