@@ -19,7 +19,7 @@
       </div>
 
       <div class="header-left__buttons">
-        <NuxtLink to="/" class="header-left-btn header-cart">
+        <NuxtLink to="/bascet" class="header-left-btn header-cart">
           <bascet-counter />
           Корзина
         </NuxtLink>

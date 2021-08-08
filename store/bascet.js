@@ -20,12 +20,13 @@ export const mutations = {
     state.bascetCount = Number(localStorage.getItem('apBascetCount'))
     state.bascetSumm = localStorage.getItem('apBascetSumm')
   },
+
   addTobascet (state, value) {
     const sevedBascet = JSON.parse(localStorage.getItem('apBascet'))
     const sevedCount = Number(localStorage.getItem('apBascetCount'))
     const sevedSumm = localStorage.getItem('apBascetSumm')
 
-    if (sevedBascet !== null) { state.bascet = sevedBascet }
+    state.bascet = (sevedBascet !== null) ? sevedBascet : []
     if (sevedCount !== null) { state.bascetCount = sevedCount }
     if (sevedSumm !== null) { state.bascetSumm = parseFloat(sevedSumm) }
 
@@ -62,6 +63,10 @@ export const getters = {
 
   BASCET_COUNT (state) {
     return state.bascetCount
+  },
+
+  BASCET_SUMM (state) {
+    return state.bascetSumm
   }
 
 }
